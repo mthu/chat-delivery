@@ -1,0 +1,46 @@
+[general]
+# message delay in minutes
+message_delay = 60
+
+# nick to display instead of chat owner's username
+your_username = You
+
+# local timezone of users
+# will be displayed in email body
+users_timezone = Europe/Prague
+
+[sql]
+# path to prosody config file containing the sql={...} directive
+# most probably it's the main config file
+prosody_config = /etc/prosody/prosody.cfg.lua
+
+# Use only if prosody config file is neither accessible nor parsing fails.
+# Information from prosody config file has higher priority
+#host = localhost
+#user = prosody
+#passwd = secret_password
+#db = prosody
+
+[users]
+# List of users to check
+# Format:
+# user's JID = delivery address
+# leave delivery address empty if the same as JID (python 2.7+)
+#
+# Example:
+# foo@bar.com= (use the same address as JID - Python 2.7 and above)
+# foo@jabber.bar.com = foo@bar.com
+foo@example.com = foobar@example.com
+
+
+[delivery]
+#the only supported method is LMTP for now
+method = lmtp
+
+#set to True if your prefer emails to be encoded using Quoted Printable instead of Base64 encoding
+#QP is better for text chats including mostly ASCII characters (no local characters)
+prefer_qp = True
+
+[delivery_lmtp]
+# inet address:port or unix socket path
+address = /var/spool/prosody/private/dovecot-lmtp
