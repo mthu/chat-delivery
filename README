@@ -1,0 +1,42 @@
+Copyright (c) 2013 Martin Plicka
+See LICENSE for more info.
+
+Chat delivery of messages archived by Prosody mod_mam_sql module to users' mailboxes.
+
+Version 0.1 limitations:
+  - Only supports Prosody using MySQL backend.
+  - Delivery is implemented via LMTP delivery agent (e.g. Dovecot's LDA) with some mail filtering
+    capabilities (e.g. Sieve filters) for moving delivered messages to another folder.
+
+DISCLAIMER: This README file is work in progress. It's likely possible that some things written below may not make sense
+or the instalation description is not complete. I will try to make this file complete as soon as possible.
+
+REQUIREMENTS
+  * python (tested with 2.7) with following packages:
+     - MySQLdb (can be easily modified to use any other PythonDB 2.0 compatible library).
+     - pytz
+     - dateutil
+     - simplejson
+  * Prosody XMPP server with mod_mam_sql module enabled.
+    I found mod_mam_sql from prosody-modules repository quite buggy, so I did my own fork (which is still ugly but more stable)
+    at http://code.mplicka.cz/prosody-modules.0-8/
+     - Users' rosters must be in SQL database (delivery.py uses them to determine buddys' nicknames)
+  * Dovecot LDA running via LMTP, sieve module installed (for moving to chats folder)
+
+
+INSTALATION
+  1. Setup Prosody to use MySQL as data backend for at least roster storage.
+     You can use another SQL database but you have to modify the delivery.py slightly (change MySQLdb module to other, like psycopg2 for PostgreSQL).
+  2. Create table in Prosody database for storing message IDs checkpoints. See schema.sql.
+  3. Place delivery.py anywhere you want.
+  4. Grab delivery.conf and modify to your needs, at least uncommented options must be set. Otherwise running delivery.py will fail.
+  5. Set-up your sieve filter to move chat messages into designated folder. Use xmpp.sieve.example as an example.
+  6. Periodicaly run delivery.py.
+  7. Place delivery.conf to /etc/prosody/chat-delivery.conf (default location) or use -c/--config command-line option when running delivery.py
+
+QUESTIONS?
+  1. I will probably not extend Chat delivery to be able to handle every possible SQL backend
+     and delivery method (but non-LMTP call of Dovecot's LDA would be also fine for many people).)
+  2. Contributors (other SQL backends, delivery methods) welcome :-)
+  3. If having questions, don't hesitate to contact me at mail[at-sign]mplicka[dot-sign]cz
+
