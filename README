@@ -30,7 +30,7 @@ REQUIREMENTS
   * Dovecot LDA running via LMTP, sieve module installed (for moving to chats folder)
 
 
-INSTALATION
+INSTALLATION
   1. Setup Prosody to use MySQL as data backend for at least roster storage.
      You can use another SQL database but you have to modify the delivery.py slightly (change MySQLdb module to other, like psycopg2 for PostgreSQL).
   2. Create table in Prosody database for storing message IDs checkpoints. See schema.sql.
