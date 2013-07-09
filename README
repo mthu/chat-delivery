@@ -37,8 +37,8 @@ INSTALATION
   3. Place delivery.py anywhere you want.
   4. Grab delivery.conf and modify to your needs, at least uncommented options must be set. Otherwise running delivery.py will fail.
   5. Set-up your sieve filter to move chat messages into designated folder. Use xmpp.sieve.example as an example.
-  6. Periodicaly run delivery.py.
-  7. Place delivery.conf to /etc/prosody/chat-delivery.conf (default location) or use -c/--config command-line option when running delivery.py
+  6. Place delivery.conf to /etc/prosody/chat-delivery.conf (default location) or use -c/--config command-line option when running delivery.py
+  7. Periodicaly run delivery.py.
 
 QUESTIONS?
   1. I will probably not extend Chat delivery to be able to handle every possible SQL backend
