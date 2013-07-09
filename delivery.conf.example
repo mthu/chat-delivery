@@ -1,31 +1,38 @@
 [general]
-# message delay in minutes
+# Message delay in minutesv
+# Messages are grouped into the same email if there is not a gap at least as long as set on following row
+# (default: 60 minutes)
 #message_delay = 60
 
-# nick to display instead of chat owner's username
+# Nick to display instead of chat owner's username in each email
+# (default: You)
 #your_username = You
 
-# local timezone of users
-# will be displayed in email body
+# Local timezone of users, it will be displayed in email body.
+# (no default value - must be set)
 users_timezone = Europe/Prague
 
 [sql]
-# path to prosody config file containing the sql={...} directive
-# most probably it's the main config file
+# Prosody config file which contain the sql={...} directive used as configuration for SQL backend.
+# Most probably it's the main config file.
+# If information is not readable, settings below are taken into account (host, user, passwd and db settings)
+# (default: /etc/prosody/prosody.cfg.lua)
 #prosody_config = /etc/prosody/prosody.cfg.lua
 
-# Use only if prosody config file is neither accessible nor parsing fails.
-# Information from prosody config file (above, default setting) has higher priority
+# Use following lines only if prosody config file is neither accessible nor parsing fails.
+# Information from prosody config file (set above) has higher priority
 #host = localhost
 #user = prosody
 #passwd = secret_password
 #db = prosody
 
 [users]
-# List of users to check
+# List of users to handle.
+# User must have the archive enabled or default_archive_policy in Prosody config must be set at least to "roster"
+# See mod_mam(_sql) docs.
+#
 # Format:
 # user's JID = delivery address
-# leave delivery address empty if the same as JID (python 2.7+)
 #
 # Example:
 # foo@bar.com= (use the same address as JID - Python 2.7 and above)
@@ -35,12 +42,15 @@ foo@example.com = foobar@example.com
 
 [delivery]
 # the only supported method is LMTP for now
+# (default: lmtp)
 #method = lmtp
 
 # set to True (default) if your prefer emails to be encoded using Quoted Printable instead of Base64 encoding
 # QP is better for text chats including mostly ASCII characters (no local characters)
+# (default: True)
 # prefer_qp = True
 
 [delivery_lmtp]
 # inet address:port or unix socket path
+# (no default value - must be set)
 address = /var/spool/prosody/private/dovecot-lmtp
