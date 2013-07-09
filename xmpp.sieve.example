@@ -1,0 +1,11 @@
+#
+# Move emails with X-Xmpp-History header to Chats folder and mark them as already seen.
+#
+require"fileinto";
+require"imap4flags";
+
+if header :matches "X-Xmpp-History" "*" {
+    setflag "\\Seen";
+    fileinto "Chats";
+    stop;
+}
