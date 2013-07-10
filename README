@@ -3,11 +3,16 @@ See LICENSE for more info.
 
 Chat delivery of messages archived by Prosody mod_mam_sql module to users' mailboxes.
 
-Features:
+FEATURES
   - Scans selected users' message archive in Prosody and delivers messages to their mailboxes (similarly as Gtalk does).
   - Groups chat messages into one email.
     Messages are written into one email as long as there is a gap between subsequent messages shorter than given threshold.
   - Works well with Dovecot LDA (via LMTP) and sieve plugin (delivery to another folder).
+
+DOWNLOAD
+  - Current version at http://code.mplicka.cz/chat-delivery/get/chat-delivery_0.1.tar.gz
+  - Or clone whole repository using
+      hg clone https://bitbucket.org/mthu/chat-delivery
 
 Version 0.1 limitations:
   - Only supports Prosody using MySQL backend.
