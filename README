@@ -10,7 +10,7 @@ FEATURES
   - Works well with Dovecot LDA (via LMTP) and sieve plugin (delivery to another folder).
 
 DOWNLOAD
-  - Current version at http://code.mplicka.cz/chat-delivery/get/chat-delivery_0.1.1.tar.gz
+  - Current version at http://bitbucket.org/mthu/chat-delivery/get/chat-delivery_0.1.1.tar.gz
   - Or clone whole repository using
       hg clone https://bitbucket.org/mthu/chat-delivery
 
@@ -30,7 +30,7 @@ REQUIREMENTS
      - simplejson
   * Prosody XMPP server with mod_mam_sql module enabled.
     I found mod_mam_sql from prosody-modules repository quite buggy, so I did my own fork (which is still ugly but more stable)
-    at http://code.mplicka.cz/prosody-modules.0-8/
+    at http://bitbucket.org/mthu/prosody-modules.0-8/
      - Users' rosters must be in SQL database (delivery.py uses them to determine buddys' nicknames)
   * Dovecot LDA running via LMTP, sieve module installed (for moving to chats folder)
 
