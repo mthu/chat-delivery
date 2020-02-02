@@ -10,9 +10,9 @@ FEATURES
   - Works well with Dovecot LDA (via LMTP) and sieve plugin (delivery to another folder).
 
 DOWNLOAD
-  - Current version at http://bitbucket.org/mthu/chat-delivery/get/chat-delivery_0.1.1.tar.gz
+  - Current version at https://github.com/mthu/chat-delivery/archive/chat-delivery_0.1.1.tar.gz
   - Or clone whole repository using
-      hg clone https://bitbucket.org/mthu/chat-delivery
+      hg clone https://github.com/mthu/chat-delivery
 
 Version 0.1 limitations:
   - Only supports Prosody using MySQL backend.
